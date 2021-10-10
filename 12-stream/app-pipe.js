@@ -9,9 +9,13 @@ adding this writable to its set of destinations.
 removing this writable to its set of destinations.
 */
 
+const zlibStream = zlib.createGzip(); // 압축 모듈
 const readStream = fs.createReadStream("./file.txt");
-const zlibStream = zlib.createGzip();
 const writeStream = fs.createWriteStream("./file4.zip");
+
+/* 
+const piping = readStream.pipe(writeStream);
+*/
 const piping = readStream.pipe(zlibStream).pipe(writeStream);
 piping.on("finish", () => {
   console.log("done!!");

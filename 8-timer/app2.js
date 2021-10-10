@@ -6,8 +6,8 @@ console.time("timeout 0");
 // callback function이 수행되기 위해서는
 // callstack이 비어있어야 한다.
 setTimeout(() => {
-  console.timeEnd("timeout 0");
   console.log("setTimeout 0");
+  console.timeEnd("timeout 0");
 }, 0);
 
 console.log("code2");
@@ -19,3 +19,12 @@ console.log("code3");
 process.nextTick(() => {
   console.log("process.nextTick");
 });
+
+/* 
+code1
+code2
+code3
+process.nextTick
+setTimeout 0
+setImmediate
+*/

@@ -1,10 +1,15 @@
-const fs = require("fs");
+/* 
+Stream을 이용하는 이유.
+: 만약 파일이 내 컴퓨터의 메모리보다 훨씬 큰 사이즈를 갖고 있을 경우, 오버플로우가 일어날 수 있기 떄문이다.
+Stream을 이용하여 하나의 거대한 파일을 작은 패킷으로 분할하여 조금씩 읽고, 덮어쓰고, 다시 읽는 것을 반복하여
+데이터를 순차적으로 처리함으로써 불상사를 방지하며 동시에 메모리의 효율성을 높인다.
+*/
 
 /* Readable Streams effectively operate in one of two modes.
 : Simplified abstraction for the more complicated internal state management that is happening within the Readable Stream implementaion
 
 Flowing Mode
-: Data is read from the underlying system automatically and provided to an applicattion
+: Data is read from the underlying system automatically and provided to an application
 as quikly as possible using events via the EventEmitter interface
 
 Paused Mode
@@ -47,13 +52,15 @@ Paused Mode
   2. readable.on('readable') / readable.read()
   3. readable.pause() / readable.resume()
 */
+const fs = require("fs");
 
-const data = [];
 const readStream = fs.createReadStream("./file.txt", {
-  // highWaterMark: 8, // default: 64kbytes
+  // highWaterMark: Determines the size of the buffer.(얼마나 큰 사이즈별로 저장했다가 처리할 것인지)
+  //highWaterMark: 8, // default-size: 64kbytes
   // encoding: "utf-8",
 });
 
+const data = [];
 readStream
   .on("data", (chunk) => {
     // console.log(chunk);

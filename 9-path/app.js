@@ -2,6 +2,7 @@ const path = require("path");
 
 // POSIX (Unix: Mac, Linux): 'Users/temp/myfile.html'
 // Windows: 'C:\\temp\\myfile.html'
+// Path 모듈을 이용해서 운영체제 별로 경로표기법이 달라져도 잘 동작할 수 있도록 만들어야함
 
 console.log(__dirname);
 console.log(__filename);

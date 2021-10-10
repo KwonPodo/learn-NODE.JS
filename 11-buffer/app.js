@@ -29,7 +29,7 @@ console.log(buf.toString("utf-8"));
 
 const buf2 = Buffer.alloc(2);
 const buf3 = Buffer.allocUnsafe(2); // fast but unsafe. NOT INITIALIZED!
-buf2[0] = 72; // ASCII
+buf2[0] = 72; // ASCII코드 할당.
 buf2[1] = 73;
 console.log(buf2.toString());
 console.log(buf3);
@@ -37,6 +37,7 @@ console.log(buf3);
 // Copy Buffer
 // buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]])
 // Copies data from a region of buf to a region in target, even if the target memory region overlaps with buf
+// copies buf2 -> buf3
 
 buf2.copy(buf3);
 console.log(buf3.toString());
