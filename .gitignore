@@ -1,3 +1,4 @@
 npm/node_modules/ 
 script_challenge/.vscode/
 node_modules/
+*.env
