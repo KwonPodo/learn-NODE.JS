@@ -3,8 +3,13 @@ import cors from "cors";
 import morgan from "morgan";
 import helmet from "morgan";
 import "express-async-errors";
+import dotenv from "dotenv";
+
 import tweetsRouter from "./router/tweetsRoute.js";
 import authRouter from "./router/authRoute.js";
+
+dotenv.config();
+console.log(process.env.JWT_SECRET);
 
 const app = express();
 
